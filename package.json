@@ -1,0 +1,49 @@
+{
+  "name": "my-qwik-basic-starter",
+  "description": "Recommended for your first Qwik app",
+  "engines": {
+    "node": ">=15.0.0"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "qwik build",
+    "build.client": "vite build && npm run i18n-translate",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.server": "vite build --ssr src/entry.express.tsx",
+    "build.types": "tsc --incremental --noEmit",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "i18n-extract": "node_modules/.bin/localize-extract -s \"dist/build/*.js\" -f json -o src/locale/message.en.json",
+    "i18n-translate": "node_modules/.bin/localize-translate -s \"*.(js|json)\" -t src/locale/message.*.json -o dist/build/{{LOCALE}} -r ./dist/build",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "preview": "qwik build preview && vite preview --open",
+    "serve": "node server/entry.express",
+    "start": "vite --open --mode ssr",
+    "qwik": "qwik"
+  },
+  "devDependencies": {
+    "@builder.io/qwik-city": "github:QwikDev/qwik-city-build#9306818ac6318b73b2d7b597a9e9512c2f024bc8",
+    "@builder.io/qwik": "github:QwikDev/qwik-build#55dc8da599c585a880561fe8db9dd488c043eb1c",
+    "@types/compression": "^1.7.2",
+    "@types/eslint": "^8.44.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-qwik": "1.5.5",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.4",
+    "vite-tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "@angular/localize": "17.3.7",
+    "compression": "^1.7.4"
+  }
+}
